@@ -14,5 +14,13 @@ print(wyjscie)
 def porzadkowanie_na_prawo(wiersze):
     import numpy as np
     macierz = np.matrix(wiersze)
-    return macierz
+    return str(macierz)
+print(porzadkowanie_na_prawo([[1, 2, 10, 150], [10, 2, 1000, 2], [1, 120, 1, 1000]]))
+
+input = [[1, 2, 10, 150], [10, 2, 1000, 2], [1, 120, 1, 1000]]
+
+
+oczekiwany_output = '[[   1    2   10  150]\n [  10    2 1000    2]\n [   1  120    1 1000]]'
+
+assert porzadkowanie_na_prawo(input) == oczekiwany_output
 
