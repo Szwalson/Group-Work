@@ -1,4 +1,5 @@
 import numpy as np
+import math as math
 
 
 # Printowanie macierzy z liczbami na lewo
@@ -23,7 +24,7 @@ def porzadkowanie_na_prawo(wiersze):
     return str(macierz)
 
 
-print(porzadkowanie_na_prawo([[1, 2, 10, 150], [10, 2, 1000, 2], [1, 120, 1, 1000]]))
+# print(porzadkowanie_na_prawo([[1, 2, 10, 150], [10, 2, 1000, 2], [1, 120, 1, 1000]]))
 
 # Test prawo
 
@@ -36,3 +37,26 @@ assert porzadkowanie_na_prawo(input) == oczekiwany_output
 input1 = [[1, 2, 10, 150], [10, 2, 1000, 2], [1, 120, 1, 1000]]
 output1 = '[1   ,  2    ,  10    ,  150 ]\n[10  ,  2    ,  1000  ,  2   ]\n[1   ,  120  ,  1     ,  1000]'
 assert lewo(input1) == output1
+
+
+# Wierzchołek kwadratu
+
+def kwadrat(wierzcholki):
+    x = [wierzcholek[0] for wierzcholek in wierzcholki]
+    y = [wierzcholek[1] for wierzcholek in wierzcholki]
+
+    ab = math.sqrt(((x[0] - x[1]) ** 2) + ((y[0] - y[1]) ** 2))
+    ac = math.sqrt(((x[0] - x[2]) ** 2) + ((y[0] - y[2]) ** 2))
+
+    if ab < ac:
+        pozostalyx = x[0] + x[2] - x[1]
+        pozostalyy = y[0] + y[2] - y[1]
+    else:
+        pozostalyx = x[0] + x[1] - x[2]
+        pozostalyy = y[0] + y[1] - y[2]
+
+    return [pozostalyx, pozostalyy]
+
+
+kwadrat1 = [[1, 1], [2, 3], [4, 2]]
+print(kwadrat(kwadrat1))
