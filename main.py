@@ -1,38 +1,32 @@
-import numpy as np
+# traingle
+
+import math
+
+def third_vertex(x1, y1, x2, y2):
+
+    # calculate the distance between (x1, y1) and (x2, y2)
+    distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+
+    # calculate the angle between the two points (x1, y1) and (x2, y2)
+    angle = math.atan2(y2 - y1, x2 - x1)
+
+    # calculate the coordinate of the first point of third vertex
+    x3_1 = x1 + distance * math.cos(angle - (1 * math.pi / 3))
+    y3_1 = y1 + distance * math.sin(angle - (1 * math.pi / 3))
+
+    # calculate the coordinate of the second point of third vertex
+    x3_2 = x1 + distance * math.cos(angle + (1 * math.pi / 3))
+    y3_2 = y1 + distance * math.sin(angle + (1 * math.pi / 3))
 
 
-# Printowanie macierzy z liczbami na lewo
+    return[(x3_1, y3_1), (x3_2, y3_2)]
 
-def lewo(wiersze):
-    szerokosc = [max(len(str(wiersz[i])) for wiersz in wiersze) for i in range(len(wiersze[0]))]
-    zmienione_wiersze = []
-    for wiersz in wiersze:
-        zmieniony_wiersz = '[{}]'.format('  ,  '.join(str(val).ljust(width) for val, width in zip(wiersz, szerokosc)))
-        zmienione_wiersze.append(zmieniony_wiersz)
-    return '\n'.join(zmienione_wiersze)
+# Example
 
+x1, y1 = 1, 1
+x2, y2 = 2, 3
 
-# wiersze = [[1, 2, 10, 150], [10, 2, 1000, 2], [1, 120, 1, 1000]]
-# wyjscie = lewo(wiersze)
-# print(wyjscie)
+third_points = third_vertex(x1, y1, x2, y2)
 
-# Printowanie macierzy z liczbami na prawo
-
-def porzadkowanie_na_prawo(wiersze):
-    macierz = np.matrix(wiersze)
-    return str(macierz)
-
-
-print(porzadkowanie_na_prawo([[1, 2, 10, 150], [10, 2, 1000, 2], [1, 120, 1, 1000]]))
-
-# Test prawo
-
-input = [[1, 2, 10, 150], [10, 2, 1000, 2], [1, 120, 1, 1000]]
-oczekiwany_output = '[[   1    2   10  150]\n [  10    2 1000    2]\n [   1  120    1 1000]]'
-assert porzadkowanie_na_prawo(input) == oczekiwany_output
-
-# Test lewo
-
-input1 = [[1, 2, 10, 150], [10, 2, 1000, 2], [1, 120, 1, 1000]]
-output1 = '[1   ,  2    ,  10    ,  150 ]\n[10  ,  2    ,  1000  ,  2   ]\n[1   ,  120  ,  1     ,  1000]'
-assert lewo(input1) == output1
+for i, point in enumerate(third_points):
+    print("Third vertex (number {}):".format(i+1), point)
