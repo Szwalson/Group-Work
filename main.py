@@ -91,3 +91,45 @@ third_points = third_vertex(x1, y1, x2, y2)
 
 for i, point in enumerate(third_points):
     print("Third vertex (number {}):".format(i+1), point)
+
+
+def test_kwadrat():
+    kwadrat1 = [[1, 1], [2, 3], [4, 2]]
+    result1 = kwadrat(kwadrat1)
+    assert result1 == [3, 0], f"Expected [3, 0], but got {result1}"
+
+    kwadrat2 = [[0, 0], [0, 4], [4, 4]]
+    result2 = kwadrat(kwadrat2)
+    assert result2 == [4, 0], f"Expected [4, 0], but got {result2}"
+
+    kwadrat3 = [[-1, -1], [2, 2], [4, 1]]
+    result3 = kwadrat(kwadrat3)
+    assert result3 == [1, -2], f"Expected [1, -1], but got {result3}"
+
+    print("All test cases pass")
+
+test_kwadrat()
+
+def test_third_vertex():
+    x1, y1 = 1, 1
+    x2, y2 = 2, 3
+    result1 = third_vertex(x1, y1, x2, y2)
+    expected1 = [(3.232050807568877, 1.1339745962155614), (-0.23205080756887653, 2.8660254037844393)]
+    assert result1 == expected1, f"Expected {expected1}, but got {result1}"
+
+    x3, y3 = 0, 0
+    x4, y4 = 5, 0
+    result2 = third_vertex(x3, y3, x4, y4)
+    expected2 = [(2.5000000000000004, -4.330127018922193), (2.5000000000000004, 4.330127018922193)]
+    assert result2 == expected2, f"Expected {expected2}, but got {result2}"
+
+    x5, y5 = -2, -2
+    x6, y6 = 3, 4
+    result3 = third_vertex(x5, y5, x6, y6)
+    expected3 = [(5.696152422706632, -3.3301270189221923), (-4.696152422706631, 5.330127018922194)]
+    assert result3 == expected3, f"Expected {expected3}, but got {result3}"
+
+    print("All test cases pass")
+
+test_third_vertex()
+
